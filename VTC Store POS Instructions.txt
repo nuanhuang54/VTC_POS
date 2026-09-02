@@ -1,0 +1,45 @@
+VTC Store POS Instructions
+
+Core Features You Need:
+    1. Inventory Management: Track thousands of unique items, expansions, 
+    and individual cards (singles) with condition and foil variants
+    2. TCG Integration: Connect with databases like Scryfall(Magic: The Gathering) or Yu-Gi-Oh! APIs
+    to auto-populate card names, sets, and market pricing.
+    3. Barcode Scanning: Uses fast barcode scanners for sealed products, and custom label printing
+    for loose items or single cards
+    4. Event and Table Management: Charge entry fees for tournaments, track player registration,
+    and manage store seating or play-space time.
+    5. Customer Loyalty Program: Track store credit for trade-ins, reward points, and tournament win
+    histories.
+
+Steps to Build or Program the System:
+    1. Choose the Tech Stack: 
+        1. Backend: Python, built using FastAPI or Django REST Framework. This Handles business logic,
+        the database, hardware communication, and pricing API sync loops.
+        2. Database: PostgreSQL, it is robust, handles complex relational tables easily and works
+        perfectly with Python.
+        3. Frontend: React, Vue or Electron for desktop app/ A lightweight local web app(HTML/JS or
+        a python framework like Flet/Reflex) that cashiers use on a browser or tablet.
+        4. Hardware Integration: node-usb or WebUSB to connect receipt printers, barcode scanners,
+            and cash drawers.
+    2. Design the Database Schema:
+        1. Create Tables for products, singles and customers
+        2. Add a transactions table linked to payment processors like Stripe/square APIs.
+    3. Integrate TCG pricing APIs:
+        1. Write Scripts to fetch current market prices from APIs like TCGplayer or Scryfall so your
+    4. Build the Checkout Interface:
+        1. Design a touch-friendly UI for cashiers to quickly search by game title, scan barcodes, 
+            or apply store credit.
+    
+
+Step 1: Find out what the current website is: WooCommerce with bare bone model.
+Step 2: The Core Database Schema (Python/SQLAlchemy)
+Step 3: Handle Hardware in Python
+Step 4: The Live Pricing Loop
+
+VTC-shop-pos/
+│
+├── database.py       # Handles database setup, connection pool, and ORM tables
+├── main.py           # FastAPI script (The API server that runs your checkout)
+├── worker.py         # The background loop script (Syncs stock to WooCommerce)
+└── requirements.txt  # List of dependencies (fastapi, sqlalchemy, requests, etc.)
